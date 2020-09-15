@@ -23,7 +23,7 @@ function HydrateBanner(fileBanner: FileBanner, banner: string) {
         fileBanner.banner += "\n"
       }
     });
-    core.debug("The file for ${fileBanner.ext} is \n ${fileBanner.banner}");
+    core.debug(`The file for ${fileBanner.ext} is \n ${fileBanner.banner}`);
 }
 
 async function BannerChecker(inputs: Inputs, fileBanners: FileBanner[]){
@@ -38,14 +38,14 @@ async function BannerChecker(inputs: Inputs, fileBanners: FileBanner[]){
 function ParseFile(filePath: string, inputs: Inputs, fileBanners: FileBanner[]){
   let fileExtension = path.extname(filePath);
 
-  core.debug("Reading file in path ${filePath}");
+  core.debug(`Reading file in path ${filePath}`);
   
   fileBanners.forEach(fileBanner => {
     if(fileBanner.ext === fileExtension){
       var contents = fs.readFileSync(filePath).toString();
       if(contents.startsWith(fileBanner.banner)){
         let fileName = path.parse(filePath).name;
-        core.setFailed('File ${fileName} does not have the required banner.')
+        core.setFailed(`File ${fileName} does not have the required banner.`)
       }
     }
   });
