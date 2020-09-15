@@ -1,11 +1,22 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Banner Checker'
+description: 'Validate your files begin with a specific banner for compliance reasons'
+author: 'Antonios Katopodis'
 inputs:
-  milliseconds: # change this
+  banner:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'The banner to check for each file'
+  path: # change this
+    required: true
+    description: 'The path to scan for the files'
+    default: '.'
+  include-extensions:
+    description: 'Scan only those specific extensions'
+  excluextensions:
+    description: 'Don't scan those specific extensions'
+  warning:
+    required: true
+    description: "If set to true will output the missing banners as warnings instead of erros"
+    default: 'true'
 runs:
   using: 'node12'
   main: 'dist/index.js'
