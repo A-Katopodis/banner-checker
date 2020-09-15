@@ -14,9 +14,8 @@ inputs:
   excluextensions:
     description: 'Don't scan those specific extensions'
   warning:
-    required: true
     description: "If set to true will output the missing banners as warnings instead of erros"
-    default: 'true'
+    default: 'false'
 runs:
   using: 'node12'
   main: 'dist/index.js'
