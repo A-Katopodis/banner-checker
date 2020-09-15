@@ -116,7 +116,7 @@ function HydrateBanner(fileBanner, banner) {
             fileBanner.banner += "\n";
         }
     });
-    core.debug("The file for ${fileBanner.ext} is \n ${fileBanner.banner}");
+    core.debug(`The file for ${fileBanner.ext} is \n ${fileBanner.banner}`);
 }
 function BannerChecker(inputs, fileBanners) {
     return __awaiter(this, void 0, void 0, function* () {
@@ -129,13 +129,13 @@ function BannerChecker(inputs, fileBanners) {
 }
 function ParseFile(filePath, inputs, fileBanners) {
     let fileExtension = path.extname(filePath);
-    core.debug("Reading file in path ${filePath}");
+    core.debug(`Reading file in path ${filePath}`);
     fileBanners.forEach(fileBanner => {
         if (fileBanner.ext === fileExtension) {
             var contents = fs.readFileSync(filePath).toString();
             if (contents.startsWith(fileBanner.banner)) {
                 let fileName = path.parse(filePath).name;
-                core.setFailed('File ${fileName} does not have the required banner.');
+                core.setFailed(`File ${fileName} does not have the required banner.`);
             }
         }
     });
