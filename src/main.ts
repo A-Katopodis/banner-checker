@@ -71,6 +71,7 @@ class Inputs {
 
   Initialize(){
     this.banner = core.getInput('banner');
+    core.debug(core.getInput('banner'));
     this.path = core.getInput('path');
     // this.includeExtensions = utils.ParseListInputs(core.getInput('include-extensions'));
     // this.excludeExtensions = utils.ParseListInputs(core.getInput('exclude-extensions'));
