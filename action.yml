@@ -5,13 +5,13 @@ inputs:
   banner:
     required: true
     description: 'The banner to check for each file'
-  path: # change this
+  path:
     required: true
     description: 'The path to scan for the files'
     default: '.'
   include-extensions:
     description: 'Scan only those specific extensions'
-  excluextensions:
+  exclude-extensions:
     description: 'Don't scan those specific extensions'
   warning:
     description: "If set to true will output the missing banners as warnings instead of erros"
