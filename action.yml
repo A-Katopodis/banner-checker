@@ -14,7 +14,7 @@ inputs:
     default: ''
   exclude-extensions:
     required: false
-    description: 'Dont scan those specific extensions'
+    description: 'Dont scasssn those specific extensions'
     default: ''
   warning:
     required: false
