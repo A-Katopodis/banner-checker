@@ -9,10 +9,13 @@ inputs:
     required: true
     description: 'The path to scan for the files'
   include-extensions:
+    required: false
     description: 'Scan only those specific extensions'
   exclude-extensions:
+    required: false
     description: 'Don't scan those specific extensions'
   warning:
+    required: false
     description: "If set to true will output the missing banners as warnings instead of erros"
     default: 'false'
 runs:
