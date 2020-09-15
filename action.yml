@@ -11,9 +11,11 @@ inputs:
   include-extensions:
     required: false
     description: 'Scan only those specific extensions'
+    default: ''
   exclude-extensions:
     required: false
-    description: 'Don't scan those specific extensions'
+    description: 'Dont scan those specific extensions'
+    default: ''
   warning:
     required: false
     description: "If set to true will output the missing banners as warnings instead of erros"
