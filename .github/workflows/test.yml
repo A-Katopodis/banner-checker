@@ -17,7 +17,7 @@ jobs:
         with:
           repository: A-Katopodis/super-duper-happiness
           path: test-repo
-      - uses: ./action
+      - uses: action/.
         with:
           path: test-repo
           banner: testbanner should be\nnewline
