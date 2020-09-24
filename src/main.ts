@@ -92,7 +92,7 @@ async function run(): Promise<void> {
     let inputs = new Inputs();
 
     core.debug('Parsed the inputs ...')
-
+    core.debug(`The banner is: ${inputs.banner}`);
     fileBanners.forEach(fileBanner => {
       HydrateBanner(fileBanner, inputs.banner); 
     });
