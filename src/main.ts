@@ -55,7 +55,7 @@ function ParseFile(filePath: string, inputs: Inputs, fileBanners: FileBanner[]){
 
       var contents = fs.readFileSync(filePath).toString();
 
-      if(contents.startsWith(fileBanner.banner)){
+      if(!contents.startsWith(fileBanner.banner)){
         let fileName = path.parse(filePath).name;
         let fileExt = path.parse(filePath).ext;
         core.setFailed(`File ${fileName}.${fileExt} does not have the required banner.`);
