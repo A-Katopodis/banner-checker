@@ -1,7 +1,7 @@
 name: 'Banner Checker'
 description: 'Validate your files begin with a specific banner for compliance reasons'
 author: 'Antonios Katopodis'
-icon: 'align-justify'
+icon: align-justify
 inputs:
   banner:
     required: true
