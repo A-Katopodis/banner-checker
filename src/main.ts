@@ -7,7 +7,7 @@ import * as nodeDir from 'node-dir'
 import * as path from 'path'
 
 
-
+// The supported extensions for the action
 const fileBanners: FileBanner[] = [
   { ext: '.js', commentStyle: '//', banner:'' },
   { ext: '.yml', commentStyle: '#', banner:'' }
@@ -29,6 +29,7 @@ function HydrateBanner(fileBanner: FileBanner, banner: string) {
       if(index != lines.length - 1){
         fileBanner.banner += "\n"
       }
+
     });
     core.debug(`The file for ${fileBanner.ext} is \n ${fileBanner.banner}`);
 }

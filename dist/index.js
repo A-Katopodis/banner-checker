@@ -107,6 +107,7 @@ const utils_1 = __webpack_require__(918);
 const fs = __importStar(__webpack_require__(747));
 const nodeDir = __importStar(__webpack_require__(92));
 const path = __importStar(__webpack_require__(622));
+// The supported extensions for the action
 const fileBanners = [
     { ext: '.js', commentStyle: '//', banner: '' },
     { ext: '.yml', commentStyle: '#', banner: '' }
