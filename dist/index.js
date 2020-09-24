@@ -103,6 +103,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const core = __importStar(__webpack_require__(186));
+const utils_1 = __webpack_require__(918);
 const fs = __importStar(__webpack_require__(747));
 const nodeDir = __importStar(__webpack_require__(92));
 const path = __importStar(__webpack_require__(622));
@@ -152,8 +153,8 @@ class Inputs {
         this.banner = core.getInput('banner');
         core.debug(core.getInput('banner'));
         this.path = core.getInput('path');
-        // this.includeExtensions = utils.ParseListInputs(core.getInput('include-extensions'));
-        // this.excludeExtensions = utils.ParseListInputs(core.getInput('exclude-extensions'));
+        this.includeExtensions = utils_1.Utils.ParseListInputs(core.getInput('include-extensions'));
+        this.excludeExtensions = utils_1.Utils.ParseListInputs(core.getInput('exclude-extensions'));
         this.warning = core.getInput('warning') === 'true';
     }
 }
@@ -1188,6 +1189,23 @@ module.exports = function (xs, fn) {
 var isArray = Array.isArray || function (xs) {
     return Object.prototype.toString.call(xs) === '[object Array]';
 };
+
+
+/***/ }),
+
+/***/ 918:
+/***/ (function(__unusedmodule, exports) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Utils = void 0;
+class Utils {
+    static ParseListInputs(input, seperator = ",") {
+        return input.split(seperator);
+    }
+}
+exports.Utils = Utils;
 
 
 /***/ }),

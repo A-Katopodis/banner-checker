@@ -41,12 +41,16 @@ function ParseFile(filePath: string, inputs: Inputs, fileBanners: FileBanner[]){
   core.debug(`Reading file in path ${filePath}`);
   
   fileBanners.forEach(fileBanner => {
+    
     if(fileBanner.ext === fileExtension){
+      
       var contents = fs.readFileSync(filePath).toString();
+
       if(contents.startsWith(fileBanner.banner)){
         let fileName = path.parse(filePath).name;
         core.setFailed(`File ${fileName} does not have the required banner.`)
       }
+
     }
   });
 }
@@ -73,8 +77,8 @@ class Inputs {
     this.banner = core.getInput('banner');
     core.debug(core.getInput('banner'));
     this.path = core.getInput('path');
-    // this.includeExtensions = utils.ParseListInputs(core.getInput('include-extensions'));
-    // this.excludeExtensions = utils.ParseListInputs(core.getInput('exclude-extensions'));
+    this.includeExtensions = utils.ParseListInputs(core.getInput('include-extensions'));
+    this.excludeExtensions = utils.ParseListInputs(core.getInput('exclude-extensions'));
     this.warning = core.getInput('warning') === 'true';
   }
 }
