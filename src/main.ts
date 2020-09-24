@@ -4,8 +4,15 @@ import { Utils as utils } from './utils';
 import {wait} from './wait'
 import *  as fs from 'fs'
 import * as nodeDir from 'node-dir'
-import { pathToFileURL } from 'url';
 import * as path from 'path'
+
+
+
+const fileBanners: FileBanner[] = [
+  { ext: '.js', commentStyle: '//', banner:'' },
+  { ext: '.yml', commentStyle: '#', banner:'' }
+]
+
 class FileBanner {
   ext!: string
   banner!: string
@@ -41,26 +48,22 @@ function ParseFile(filePath: string, inputs: Inputs, fileBanners: FileBanner[]){
   core.debug(`Reading file in path ${filePath}`);
   
   fileBanners.forEach(fileBanner => {
-    
+
     if(fileBanner.ext === fileExtension){
       
+      core.debug(`${filePath} is the matching extesion of: ${fileExtension}`);
+
       var contents = fs.readFileSync(filePath).toString();
 
       if(contents.startsWith(fileBanner.banner)){
         let fileName = path.parse(filePath).name;
-        core.setFailed(`File ${fileName} does not have the required banner.`)
+        let fileExt = path.parse(filePath).ext;
+        core.setFailed(`File ${fileName}.${fileExt} does not have the required banner.`);
       }
 
     }
   });
 }
-
-
-const fileBanners: FileBanner[] = [
-  { ext: '.js', commentStyle: '//', banner:'' },
-  { ext: '.yml', commentStyle: '#', banner:'' }
-]
-
 
 class Inputs {
   banner!: string;
@@ -94,10 +97,10 @@ async function run(): Promise<void> {
       HydrateBanner(fileBanner, inputs.banner); 
     });
 
-    core.debug('Created banners ...')
+    core.debug('Created banners ...');
     BannerChecker(inputs, fileBanners);
   } catch (error) {
-    core.setFailed(error.message)
+    core.setFailed(error.message);
   }
 }
 

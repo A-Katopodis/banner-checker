@@ -107,6 +107,10 @@ const utils_1 = __webpack_require__(918);
 const fs = __importStar(__webpack_require__(747));
 const nodeDir = __importStar(__webpack_require__(92));
 const path = __importStar(__webpack_require__(622));
+const fileBanners = [
+    { ext: '.js', commentStyle: '//', banner: '' },
+    { ext: '.yml', commentStyle: '#', banner: '' }
+];
 class FileBanner {
 }
 function HydrateBanner(fileBanner, banner) {
@@ -133,18 +137,16 @@ function ParseFile(filePath, inputs, fileBanners) {
     core.debug(`Reading file in path ${filePath}`);
     fileBanners.forEach(fileBanner => {
         if (fileBanner.ext === fileExtension) {
+            core.debug(`${filePath} is the matching extesion of: ${fileExtension}`);
             var contents = fs.readFileSync(filePath).toString();
             if (contents.startsWith(fileBanner.banner)) {
                 let fileName = path.parse(filePath).name;
-                core.setFailed(`File ${fileName} does not have the required banner.`);
+                let fileExt = path.parse(filePath).ext;
+                core.setFailed(`File ${fileName}.${fileExt} does not have the required banner.`);
             }
         }
     });
 }
-const fileBanners = [
-    { ext: '.js', commentStyle: '//', banner: '' },
-    { ext: '.yml', commentStyle: '#', banner: '' }
-];
 class Inputs {
     constructor() {
         this.Initialize();
