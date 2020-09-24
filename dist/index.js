@@ -139,7 +139,7 @@ function ParseFile(filePath, inputs, fileBanners) {
         if (fileBanner.ext === fileExtension) {
             core.debug(`${filePath} is the matching extesion of: ${fileExtension}`);
             var contents = fs.readFileSync(filePath).toString();
-            if (contents.startsWith(fileBanner.banner)) {
+            if (!contents.startsWith(fileBanner.banner)) {
                 let fileName = path.parse(filePath).name;
                 let fileExt = path.parse(filePath).ext;
                 core.setFailed(`File ${fileName}.${fileExt} does not have the required banner.`);
