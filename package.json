@@ -33,7 +33,7 @@
     "node-dir": "^0.1.17"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.10",
+    "@types/jest": "^26.0.20",
     "@types/node": "^14.10.0",
     "@typescript-eslint/parser": "^4.3.0",
     "@vercel/ncc": "^0.23.0",
